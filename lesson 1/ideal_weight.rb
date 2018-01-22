@@ -1,5 +1,10 @@
 print 'Как вас зовут?'
 name = gets.chomp.capitalize
-print 'Какой у вас вес?'
-weight = gets.to_i
-puts "#{name}, Ваш вес уже оптимальный" if (weight - 110) < 0
+print 'Какой у вас рост?'
+growth = gets.to_f
+ideal_weight = growth - 110
+if ideal_weight < 0
+  puts "#{name}, Ваш вес уже оптимальный"
+else
+  puts "Идеальный вес для вас это #{ideal_weight}"
+end

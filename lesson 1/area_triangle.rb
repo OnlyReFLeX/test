@@ -1,6 +1,6 @@
 print "Какое основание у треугольника ? "
-a = gets.to_i
+a = gets.to_f
 print "Какая высота у треугольника ? "
-h = gets.to_i
-area = 1.0/2*a*h
+h = gets.to_f
+area = 0.5 * a * h
 puts "Плошадь треугольника равна #{area}"
