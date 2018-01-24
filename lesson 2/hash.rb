@@ -1,10 +1,8 @@
 vowels = {}
-x = 0
-
-('a'..'z').each do |letter|
-  x += 1
-  if %w(a e o u i).include?(letter)
-    vowels[letter] = x
+vowels_letter = %w(a e o u i)
+('a'..'z').each_with_index do |letter, x|
+  if vowels_letter.include?(letter)
+    vowels[letter] = x + 1
   end
 end
 
