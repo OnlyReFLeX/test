@@ -1,14 +1,14 @@
 basket = {}
 
 loop do
-print 'Какой товар вы хотите добавить: '
-product = gets.chomp
-break if product == 'стоп'
-print 'Цена за товар: '
-price = gets.to_f
-print 'Количество товара: '
-quantity = gets.to_f
-basket[product] = { price: price, quantity: quantity }
+  print 'Какой товар вы хотите добавить: '
+  product = gets.chomp
+  break if product == 'стоп'
+  print 'Цена за товар: '
+  price = gets.to_f
+  print 'Количество товара: '
+  quantity = gets.to_f
+  basket[product] = { price: price, quantity: quantity }
 end
 puts basket
 
