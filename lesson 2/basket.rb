@@ -10,7 +10,6 @@ loop do
   quantity = gets.to_f
   basket[product] = { price: price, quantity: quantity }
 end
-puts basket
 
 sum = 0
 total = 0
