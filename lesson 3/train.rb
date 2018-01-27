@@ -1,6 +1,5 @@
 class Train
-  attr_accessor :speed, :route
-  attr_reader :carriages, :station, :number, :type
+  attr_reader :carriages, :station, :number, :type, :speed, :route
   def initialize(number, type, carriages)
     @number = number
     @type = type.to_sym
@@ -8,9 +7,25 @@ class Train
     @speed = 0
     @route_index = 0
   end
+  def set_route(route)
+    unless @route.nil?
+      current_station.delete_train(self)
+      @route_index = 0
+    end
+    @route = route
+    current_station.add_train(self)
+  end
 
   def brake
     @speed = 0
+  end
+
+  def add_speed
+    @speed += 10
+  end
+
+  def reduce_speed
+    @speed -= 10 if speed > 0
   end
 
   def add_carriage
@@ -22,34 +37,34 @@ class Train
   end
 
   def forward
-    if current_station == @route.route.last
+    if current_station == @route.stations.last
       puts "Вы на конечной станции"
     else
       current_station.delete_train(self)
-      next_station.add_train(self)
       @route_index += 1
+      current_station.add_train(self)
     end
   end
 
   def backward
-    if current_station == @route.route.first
+    if current_station == @route.stations.first
       puts "Вы на начальной станции"
     else
       current_station.delete_train(self)
-      prev_station.add_train(self)
       @route_index -= 1
+      current_station.add_train(self)
     end
   end
 
   def next_station
-    @route.route[@route_index + 1]
+    @route.stations[@route_index + 1]
   end
 
   def prev_station
-    @route.route[@route_index - 1]
+    @route.stations[@route_index - 1]
   end
 
   def current_station
-    @route.route[@route_index]
+    @route.stations[@route_index]
   end
 end
