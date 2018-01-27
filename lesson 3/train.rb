@@ -7,11 +7,12 @@ class Train
     @speed = 0
     @route_index = 0
   end
+
   def set_route(route)
     unless @route.nil?
       current_station.delete_train(self)
-      @route_index = 0
     end
+    @route_index = 0
     @route = route
     current_station.add_train(self)
   end
