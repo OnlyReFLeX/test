@@ -120,7 +120,7 @@ class Controller
     train = select_train
     print 'Сколько вагонов вы хотите добавить: '
     quantity = gets.to_i
-    if train.type == :passenger
+    if train.class == PassengerTrain
       quantity.times do
         train.add_carriage(PassengerCarriage.new)
       end
