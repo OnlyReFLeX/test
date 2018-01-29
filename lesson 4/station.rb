@@ -16,8 +16,8 @@ class Station
   def station_trains
     puts "Поездов на станции #{@trains.size}"
     if @trains.any?
-      @train.each.with_index(1) do |train, x|
-        puts "#{x}. Поезд #{train}"
+      @trains.each.with_index(1) do |train, x|
+        puts "#{x}. Поезд #{train.number}"
       end
     end
   end
