@@ -1,9 +1,7 @@
 class Station
   attr_reader :name, :trains
-
   @@all_stations = []
-  # В гугле потом нашел это def self.all; ObjectSpace.each_object(self).to_a end
-  # но подумал что, то что написал сам будет тут лучше
+
   def initialize(name)
     @name = name
     @trains = []

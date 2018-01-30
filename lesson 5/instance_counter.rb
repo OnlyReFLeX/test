@@ -5,16 +5,15 @@ module InstanceCounter
   end
 
   module ClassMethods
-    @@count = 0
-
     def instances
-      @@count
+      @count
     end
 
     private
 
     def plus_counter
-      @@count += 1
+      @count ||= 0
+      @count += 1
     end
   end
 
