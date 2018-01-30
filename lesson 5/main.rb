@@ -13,4 +13,4 @@ require_relative './controller'
 puts 'Добро пожаловать в меню управления ЖД'
 controller = Controller.new
 controller.help
-# controller.menu
+controller.menu
