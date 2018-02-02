@@ -24,7 +24,7 @@ class Route
   private
 
   def validate!
-    raise 'Переданы неверные аргументы' if @stations[0].class != Station || @stations[-1].class != Station
+    raise 'Переданы неверные аргументы' unless (@stations.first.is_a? Station) && (@stations.last.is_a? Station)
     true
   end
 end
