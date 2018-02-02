@@ -22,9 +22,7 @@ class Train
   end
 
   def set_route(route)
-    unless @route.nil?
-      current_station.delete_train(self)
-    end
+    current_station.delete_train(self) unless @route.nil?
     @route_index = 0
     @route = route
     current_station.add_train(self)

@@ -32,6 +32,7 @@ class Station
   end
 
   private
+
   def validate!
     raise 'Название не может быть пустым' if @name == ''
     raise 'Слишком большое название' if @name.length > 20

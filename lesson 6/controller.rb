@@ -55,6 +55,7 @@ class Controller
   end
 
   private
+
   def create_station
     print 'Введите название станции: '
     name = gets.chomp

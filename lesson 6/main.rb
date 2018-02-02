@@ -11,7 +11,6 @@ require_relative './route'
 require_relative './station'
 require_relative './controller'
 
-
 puts 'Добро пожаловать в меню управления ЖД'
 controller = Controller.new
 controller.help
