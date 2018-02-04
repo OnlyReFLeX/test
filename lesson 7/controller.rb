@@ -127,7 +127,7 @@ class Controller
 
     puts 'Выберите маршрут'
     show_routes
-    train.set_route(@routes[gets.to_i - 1])
+    train.route = (@routes[gets.to_i - 1])
     puts "Маршрут поезду #{train.number} успешно указан"
   end
 

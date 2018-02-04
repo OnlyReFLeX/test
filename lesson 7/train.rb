@@ -21,7 +21,7 @@ class Train
     @@trains[number]
   end
 
-  def set_route(route)
+  def route=(route)
     current_station.delete_train(self) unless @route.nil?
     @route_index = 0
     @route = route
@@ -76,7 +76,7 @@ class Train
     @route.stations[@route_index]
   end
 
-  def each_carriage(&block)
+  def each_carriage
     @carriages.each.with_index(1) { |carriage, x| yield(carriage, x) } unless @carriages.empty?
   end
 

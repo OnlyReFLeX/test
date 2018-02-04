@@ -31,7 +31,7 @@ class Station
     end
   end
 
-  def each_train(&block)
+  def each_train
     @trains.each { |train| yield(train) } unless @trains.empty?
   end
 
