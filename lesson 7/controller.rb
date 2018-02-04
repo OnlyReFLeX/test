@@ -181,7 +181,7 @@ class Controller
   end
 
   def trains
-    @trains.each.with_index(1) {  |train, x| puts "#{x}. #{train.number} | вагонов #{train.carriages.size} | тип #{train.type}" }
+    @trains.each.with_index(1) { |train, x| puts "#{x}. #{train.number} | вагонов #{train.carriages.size} | тип #{train.type}" }
   end
 
   def show_routes
