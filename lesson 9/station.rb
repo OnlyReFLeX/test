@@ -2,6 +2,7 @@ class Station
   include Validation
   @@stations = []
   attr_reader :name, :trains
+  validate :name, :presence
 
   def self.all
     @@stations
@@ -32,16 +33,5 @@ class Station
 
   def each_train
     @trains.each { |train| yield(train) } unless @trains.empty?
-  end
-
-  private
-
-  def validate!
-    raise 'Название не может быть пустым' if @name == ''
-    raise 'Слишком большое название' if @name.length > 20
-    if @@stations.map(&:name).include?(name) && !@@stations.include?(self)
-      raise 'Такая станция уже существует'
-    end
-    true
   end
 end

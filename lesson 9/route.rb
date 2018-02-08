@@ -1,5 +1,4 @@
 class Route
-  include Validation
   attr_reader :name, :stations
   def initialize(station_start, station_end)
     @stations = [station_start, station_end]
@@ -19,14 +18,5 @@ class Route
     @stations.each.with_index(1) do |station, x|
       puts "#{x}. #{station.name}"
     end
-  end
-
-  private
-
-  def validate!
-    unless (@stations.first.is_a? Station) && (@stations.last.is_a? Station)
-      raise 'Переданы неверные аргументы'
-    end
-    true
   end
 end

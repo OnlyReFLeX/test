@@ -5,17 +5,20 @@ module Validation
   end
 
   module ClassMethods
+    def validates
+      class_variable_get(:@@validates)
+    end
     def validate(*args)
-      unless instance_variable_get(:@validates)
-        instance_variable_set(:@validates, [])
+      unless class_variable_defined?(:@@validates)
+        class_variable_set(:@@validates, [])
       end
-      instance_variable_get(:@validates) << args
+      class_variable_get(:@@validates) << args
     end
   end
 
   module InstanceMethods
     def validate!
-      self.class.instance_variable_get(:@validates).each do |args|
+      self.class.validates.each do |args|
         val = instance_variable_get("@#{args[0]}")
 
         send "validate_#{args[1]}", val, *args[2]
@@ -32,7 +35,7 @@ module Validation
     private
 
     def validate_presence(val)
-      raise 'Значение не заполнено' if val.empty? || val.nil?
+      raise 'Значение не заполнено' if val.nil? || val.empty?
     end
 
     def validate_type(val, type)

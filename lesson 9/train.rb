@@ -11,8 +11,8 @@ class Train
   strong_attr_accessor(:str, String)
   @@trains = {}
 
-  validate :number, :presence
   validate :number, :type, String
+  validate :number, :presence
   validate :number, :format, NUMBER_TYPE
 
   def self.find(number)
