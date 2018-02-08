@@ -1,4 +1,8 @@
 class CargoTrain < Train
+  validate :number, :type, String
+  validate :number, :presence
+  validate :number, :format, NUMBER_TYPE
+
   def type
     'грузовой'
   end

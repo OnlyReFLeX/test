@@ -5,23 +5,20 @@ module Validation
   end
 
   module ClassMethods
-    def validates
-      class_variable_get(:@@validates)
-    end
-    def validate(*args)
-      unless class_variable_defined?(:@@validates)
-        class_variable_set(:@@validates, [])
-      end
-      class_variable_get(:@@validates) << args
+    attr_reader :validates
+    def validate(name, *args)
+      @validates ||= []
+      @validates << { name => args }
     end
   end
 
   module InstanceMethods
     def validate!
-      self.class.validates.each do |args|
-        val = instance_variable_get("@#{args[0]}")
-
-        send "validate_#{args[1]}", val, *args[2]
+      self.class.validates.each do |hh|
+        hh.each do |name, args|
+          val = instance_variable_get("@#{name}")
+          send "validate_#{args[0]}", val, *args[1]
+        end
       end
       true
     end
